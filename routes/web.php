@@ -15,10 +15,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return redirect('/products');
 });
-Route::namespace('Shop')->group(function (){
-    Route::get('/products', 'ProductsController@showProducts')->name('products');
-    Route::get('/product/{id}', 'ProductController@showProduct')->name('product');
-});
+Route::get('/products', 'ProductsController@showProducts')->name('products');
+Route::get('/products?sorting={sorting?}', 'ProductsController@showProducts')->name('products');
 
-Route::fallback('Shop\ProductsController@showProducts');
+
+
 

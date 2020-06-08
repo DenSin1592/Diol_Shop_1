@@ -1,4 +1,4 @@
-@extends('layouts.shop_layout')
+@extends('shop_layout')
 
 @section('content')
 
@@ -7,13 +7,13 @@
         <p class="lead"><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae error eveniet hic ipsum minus odit tempora! A, accusantium, blanditiis consectetur deserunt enim, natus neque nisi nostrum officia reiciendis veniam voluptatem!</span>
         </p>
     </div>
-    <p class="sort">Сортировать по: <a href="">цене</a> или по <a href="">названию</a>?</p>
+    <p class="sort_block">Сортировать по: <a href="{{route('products', ['sorting' => 'price'])}}">цене</a> или по <a href="{{route('products', ['sorting' => 'title'])}}">названию</a>?</p>
     <div class="container">
         <div class="card-deck mb-3 text-center  ">
             @foreach($products as $product)
             <div class="mb-4 shadow-sm .col-5us">
                 <div class="card-header">
-                    <h4 class="my-0 font-weight-normal"><a href="{{route('product', $product->id )}}">{{$product->title}}</a></h4>
+                    <h4 class="my-0 font-weight-normal"><a href="#">{{$product->title}}</a></h4>
                 </div>
                 <div class="card-body">
                     <h1 class="card-title pricing-card-title">${{$product->price}}</h1>
