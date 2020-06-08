@@ -10,6 +10,8 @@ class ProductsController extends Controller
 {
     public function showProducts(Request $request)
     {
+        $cart = $request->session()->get('cart');
+
         if($request->input('sorting')){
             $sorting = $request->input('sorting');
             $products = Product::getProductsSortByAvailabilityAndSorting($sorting);
@@ -17,6 +19,6 @@ class ProductsController extends Controller
             $products = Product::getProductsSortByAvailability();
         }
 
-        return view('products', compact('products'));
+        return view('products', compact('products','cart'));
     }
 }

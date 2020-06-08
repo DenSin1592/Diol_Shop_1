@@ -24,7 +24,15 @@
                             <li><h4 class="no_availability">Нет в наличии</h4></li>
                         @endif
                     </ul>
-                    <button type="button" class="btn btn-lg btn-block btn-outline-primary">В корзину</button>
+                     @if(isset($cart->items[$product->id]))
+                        <button type="button" id="deleteFromCart_{{$product->id}}" class="btn btn-lg btn-block btn-outline-danger" onclick="deleteFromCart({{$product->id}})">Удалить из корзины</button>
+                        <button type="button" id="addToCart_{{$product->id}}" class="btn btn-lg btn-block btn-outline-primary" onclick="addToCart({{$product->id}})" style="display: none">Добавить в корзину</button>
+
+                    @else
+                        <button type="button" id="addToCart_{{$product->id}}" class="btn btn-lg btn-block btn-outline-primary" onclick="addToCart({{$product->id}})">Добавить в корзину</button>
+                        <button type="button" id="deleteFromCart_{{$product->id}}" class="btn btn-lg btn-block btn-outline-danger" onclick="deleteFromCart({{$product->id}})" style="display: none">Удалить из корзины</button>
+
+                    @endif
                 </div>
             </div>
             @endforeach

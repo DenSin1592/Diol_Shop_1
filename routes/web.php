@@ -16,6 +16,7 @@ Route::get('/', function () {
     return redirect('/products');
 });
 Route::get('/products?sorting={sorting?}', 'ProductsController@showProducts')->name('products');
+Route::get('/cart/toggle/{id}', 'CartController@addOrDeleteFromCart')->name('add');
 
 Route::fallback('ProductsController@showProducts');
 

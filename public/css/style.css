@@ -53,9 +53,7 @@ a:hover, .sort_block > span:hover{
     cursor: pointer;
     text-decoration: underline;
 }*/
-.btn-block:hover{
-    font-size: 1.10rem;
-    width: 95%;
-    margin: 0 auto
-
+#products_in_cart{
+    margin: 0 auto;
 }
+
