@@ -22,7 +22,7 @@ class Cart
     public function addOrDeleteProducts(Model $product,  $id)
     {
         $storedItem = $this->checkProduct($product , $id);
-        //dd($storedItem);
+
         if(!$storedItem['count']){
             $storedItem['count']++;
             $storedItem['count'] > 1 ? 1 : $storedItem['count'];
@@ -31,8 +31,7 @@ class Cart
             $this->totalCount++;
             $this->totalPrice = $this->totalPrice + $product->price;
 
-        }
-        else{
+        } else{
             if ($storedItem['count']){
                 $storedItem['count']--;
                 $storedItem['price'] = $storedItem['price'] - $product->price;
@@ -41,16 +40,17 @@ class Cart
                 $this->totalPrice = $this->totalPrice - $product->price;
             }
             if($storedItem['count'] == 0){
-               // unset($this->items[$id]);
+                unset($this->items[$id]);
             }
             if($this->totalCount <= 0){
                 $this->totalCount = 0;
                 $this->totalPrice = 0;
-               // $this->items = [];
+                $this->items = [];
             }
         }
         unset($storedItem);
     }
+
     public function checkProduct(Model $product, $id)
     {
         $storedItem = ['count' => 0, 'price' => $product->price, 'item' => $product];

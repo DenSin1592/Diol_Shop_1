@@ -14,10 +14,12 @@ class ProductsController extends Controller
 
         if($request->input('sorting')){
             $sorting = $request->input('sorting');
-            $products = Product::getProductsSortByAvailabilityAndSorting($sorting);
+            $products = Product::getProductsSortByAvailabilityAndColumn($sorting);
         }else{
             $products = Product::getProductsSortByAvailability();
         }
+        if (!$products)
+            return redirect('/');
 
         return view('products', compact('products','cart'));
     }
